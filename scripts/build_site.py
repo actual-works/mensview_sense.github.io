@@ -128,6 +128,10 @@ index_template = Template("""<!DOCTYPE html>
     </nav>
   </header>
 
+  <div class="ad-disclosure" role="note">
+    <p>本記事はアフィリエイト広告を含みます。</p>
+  </div>
+
   <main>
     <section class="hero">
       <div class="hero__copy reveal">
@@ -242,6 +246,10 @@ product_template = Template("""<!DOCTYPE html>
       <a href="#rakuten">Rakuten</a>
     </nav>
   </header>
+
+  <div class="ad-disclosure" role="note">
+    <p>本記事はアフィリエイト広告を含みます。</p>
+  </div>
 
   <main>
     <article class="product-hero">
@@ -425,6 +433,17 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .intro-strip p { max-width: 780px; margin: 0; color: var(--muted); }
 .small-button { min-height: 40px; border-color: var(--rose); background: var(--rose); white-space: nowrap; }
+
+.ad-disclosure {
+  margin: 18px clamp(18px, 5vw, 72px) 0;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdfb;
+  color: var(--muted);
+  font-size: 13px;
+}
+.ad-disclosure p { margin: 0; }
 
 .section { padding: clamp(48px, 7vw, 92px) clamp(18px, 5vw, 72px); }
 .section__heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
