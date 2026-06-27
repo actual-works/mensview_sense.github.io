@@ -11,7 +11,7 @@ from urllib.request import urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 PRODUCTS_PATH = ROOT / "assets" / "data" / "products.json"
-ENDPOINT = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
+ENDPOINT = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20260401"
 
 
 def load_dotenv() -> None:
@@ -35,25 +35,27 @@ def require_env(name: str) -> str:
     return value
 
 
-def image_urls(items: list[dict] | None) -> list[str]:
+def image_urls(items) -> list[str]:
     urls = []
     for item in items or []:
-        url = item.get("imageUrl")
+        url = item if isinstance(item, str) else item.get("imageUrl")
         if url:
             urls.append(url.replace("?_ex=128x128", ""))
     return urls
 
 
-def query_item(product: dict, application_id: str, affiliate_id: str) -> dict:
+def query_item(product: dict, application_id: str, affiliate_id: str, access_key: str) -> dict:
     params = {
         "format": "json",
         "applicationId": application_id,
+        "accessKey": access_key,
         "affiliateId": affiliate_id,
         "keyword": product["keywords"],
         "hits": 1,
         "imageFlag": 1,
         "availability": 1,
         "sort": "-reviewAverage",
+        "formatVersion": 2,
         "elements": ",".join(
             [
                 "itemCode",
@@ -79,10 +81,10 @@ def query_item(product: dict, application_id: str, affiliate_id: str) -> dict:
     except URLError as exc:
         raise RuntimeError(f"Rakuten API request failed for {product['slug']}: {exc}") from exc
 
-    items = payload.get("Items") or []
+    items = payload.get("Items") or payload.get("items") or []
     if not items:
         raise RuntimeError(f"No Rakuten item found for {product['slug']} / {product['keywords']}")
-    item = items[0].get("Item", {})
+    item = items[0].get("Item", items[0].get("item", items[0]))
     return {
         "itemCode": item.get("itemCode", ""),
         "itemName": item.get("itemName", ""),
@@ -101,11 +103,12 @@ def main() -> None:
     load_dotenv()
     application_id = require_env("RAKUTEN_APPLICATION_ID")
     affiliate_id = require_env("RAKUTEN_AFFILIATE_ID")
+    access_key = require_env("RAKUTEN_ACCESS_KEY")
 
     products = json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
     updated = []
     for index, product in enumerate(products, start=1):
-        rakuten = query_item(product, application_id, affiliate_id)
+        rakuten = query_item(product, application_id, affiliate_id, access_key)
         merged = {
             **product,
             **rakuten,
