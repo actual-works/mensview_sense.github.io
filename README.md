@@ -7,6 +7,7 @@ Static Pinterest affiliate site for Cloudflare Pages.
 - `index.html` is the magazine-style front page.
 - `privacy.html` is the privacy policy page for app registration and site disclosure.
 - `products/` contains one LP-style page per product.
+- `images/` contains generated site design imagery that is not sourced from affiliate product tags.
 - `assets/data/products.json` is the product source used by the light UI behavior.
 - `assets/css/styles.css` and `assets/js/main.js` are dependency-free static assets.
 
