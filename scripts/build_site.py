@@ -321,6 +321,28 @@ def list_items(items: list[str]) -> str:
     return "\n".join(f"          <li>{html_escape(item)}</li>" for item in items)
 
 
+def benefit_items(items: list, labels: list[str] | None = None) -> str:
+    rows = []
+    for index, item in enumerate(items):
+        if isinstance(item, dict):
+            label = item["label"]
+            desc = item["desc"]
+        elif isinstance(item, (list, tuple)) and len(item) == 2:
+            label, desc = item
+        else:
+            text = str(item)
+            label = labels[index] if labels and index < len(labels) else text.split("、", 1)[0]
+            desc = text
+        rows.append(
+            f"""
+          <li>
+            <span>{html_escape(label)}</span>
+            <p>{html_escape(desc)}</p>
+          </li>"""
+        )
+    return "\n".join(rows)
+
+
 def faq_items(items: list[tuple[str, str]]) -> str:
     return "\n".join(
         f"""
@@ -349,7 +371,7 @@ def image_gallery(product: dict) -> str:
 def proof_badges(product: dict) -> str:
     rows = []
     if product.get("itemPrice"):
-        rows.append(("価格目安", f"¥{int(product['itemPrice']):,}"))
+        rows.append(("価格", f"¥{int(product['itemPrice']):,} / 楽天で要確認"))
     if product.get("reviewAverage"):
         review = f"{product['reviewAverage']}"
         if product.get("reviewCount"):
@@ -370,6 +392,59 @@ def proof_badges(product: dict) -> str:
 
 def editor_note(copy: dict) -> str:
     return copy["editor_note"]
+
+
+AFTER_COPY = {
+    "rattan-side-table": "帰宅して鍵を置く、夜にドリンクを置く。動作の受け皿が決まると散らかりが自然に減り、ソファ横やベッド横まで落ち着いて見えます。",
+    "fabric-wall-poster": "一枚の布が入るだけで、白い壁にやわらかな奥行きが生まれます。写真の背景やデスク横まで、飾りすぎず整った印象に変わります。",
+    "candle-warmer-lamp": "夜に灯りを落として香りを足すと、部屋の空気が静かに切り替わります。明るすぎない一角があるだけで、帰宅後の時間まで整って見えます。",
+    "embroidery-starter-kit": "針と糸に集中する時間ができると、休日の過ごし方に小さな余白が生まれます。完成後は部屋に飾れて、手を動かした跡もきれいに残ります。",
+    "glass-flower-vase": "花を一輪置ける場所があると、玄関やテーブルに季節感が生まれます。透明な器なら主張しすぎず、日常の清潔感を自然に引き上げます。",
+    "silk-night-cap": "眠る前の道具をひとつ決めるだけで、朝の支度に少し余裕が出ます。髪を整えたい気持ちが続きやすく、清潔感の土台を作れます。",
+    "pearl-accessory-tray": "外したリングやピアスの置き場が決まると、棚や洗面台の生活感が減ります。小さなトレイでも、身支度の一角が整って見えます。",
+    "jewelry-travel-pouch": "旅先でアクセサリーの置き場に迷わないだけで、朝の準備が軽くなります。バッグの中もホテルの洗面台も、必要なものを扱いやすく保てます。",
+    "healthy-nuts-gift": "デスクやキッチンに置く間食が整うと、午後の小腹対策も雑に見えません。甘さに寄りすぎない選択肢が、日常のリズムを支えます。",
+    "bath-salt-set": "湯船に入れるものを決めておくと、一日の終わりがただの作業になりにくい。香りや見た目が加わるだけで、休む時間まで整って見えます。",
+}
+
+
+FRICTION_TARGETS = {
+    "rattan-side-table": "小物の置き場",
+    "fabric-wall-poster": "白い壁",
+    "candle-warmer-lamp": "夜の照明",
+    "embroidery-starter-kit": "休日の過ごし方",
+    "glass-flower-vase": "花を飾る場所",
+    "silk-night-cap": "朝の髪",
+    "pearl-accessory-tray": "アクセサリーの置き場",
+    "jewelry-travel-pouch": "旅先の小物",
+    "healthy-nuts-gift": "午後の間食",
+    "bath-salt-set": "一日の終わり",
+}
+
+
+BENEFIT_LABELS = {
+    "rattan-side-table": ["置き場所が決まる", "軽い質感", "使い道が広い"],
+    "fabric-wall-poster": ["壁の余白を整える", "背景にも使える", "模様替えしやすい"],
+    "candle-warmer-lamp": ["火を使わない", "夜がやわらぐ", "置くだけで整う"],
+    "embroidery-starter-kit": ["始めやすい", "飾って楽しめる", "短時間で進む"],
+    "glass-flower-vase": ["花を邪魔しない", "一輪でも足りる", "置き場所を選ばない"],
+    "silk-night-cap": ["摩擦対策になる", "朝を整えやすい", "旅にも持てる"],
+    "pearl-accessory-tray": ["定位置ができる", "見せる収納になる", "小物置きにも使える"],
+    "jewelry-travel-pouch": ["絡まりを防ぐ", "小さく持てる", "旅先で置ける"],
+    "healthy-nuts-gift": ["置きやすい", "甘さに寄りすぎない", "手土産にも使える"],
+    "bath-salt-set": ["気分転換になる", "セルフケア感が出る", "軽いギフトに向く"],
+}
+
+
+def after_copy(product: dict, copy: dict) -> str:
+    return copy.get("after") or AFTER_COPY[product["slug"]]
+
+
+def final_copy(product: dict, copy: dict) -> str:
+    return copy.get(
+        "final",
+        f"{product['sub']} 価格・レビュー・在庫は楽天で要確認です。気になった今、楽天の最新情報だけ確認しておくのがおすすめです。",
+    )
 
 
 def card(product):
@@ -398,6 +473,9 @@ index_template = Template("""<!DOCTYPE html>
   <meta name="description" content="同年代の男性編集者の目線で選ぶ、誰が来ても感じのいい部屋づくり。Home Decorを軸に、楽天ですぐ試せる1商品1ページのガイドです。">
   <title>MENSVIEW SENSE | Pinterest Lifestyle Edit</title>
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body id="top">
@@ -523,6 +601,9 @@ product_template = Template("""<!DOCTYPE html>
   <meta name="description" content="$description">
   <title>$title | MENSVIEW SENSE</title>
   <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body id="top">
@@ -530,9 +611,10 @@ product_template = Template("""<!DOCTYPE html>
     <a class="brand" href="../index.html">MENSVIEW SENSE</a>
     <nav class="nav" aria-label="ページ内">
       <a href="../index.html#latest">All Picks</a>
+      <a href="#friction">Friction</a>
       <a href="#fit">Fit</a>
-      <a href="#faq">FAQ</a>
       <a href="#rakuten">Rakuten</a>
+      <a href="#faq">FAQ</a>
     </nav>
   </header>
 
@@ -551,33 +633,42 @@ product_template = Template("""<!DOCTYPE html>
         <p class="lead">$hero</p>
         <p class="editor-note">$editor_note</p>
         <div class="hero__actions">
-          <a class="button" id="rakuten" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で詳細を見る</a>
+          <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で見る</a>
           <a class="button button--ghost" href="#fit">暮らしに合うか見る</a>
         </div>
       </div>
     </article>
 
-    <section class="lp-section lp-problem">
+    <section class="lp-section lp-problem" id="friction">
       <p class="eyebrow">Small Friction</p>
-      <h2>買う理由は、大きな悩みより小さな違和感。</h2>
+      <h2>きっかけは、いつも“$friction_target”。</h2>
       <p>$problem</p>
     </section>
 
-    <section class="lp-section lp-split" id="fit">
-      <div>
-        <p class="eyebrow">Why it fits</p>
-        <h2>$titleが日常に効くポイント</h2>
-        <ul class="check-list">
+    <section class="lp-section">
+      <p class="eyebrow">After</p>
+      <h2>$titleがあるだけで、その一角が『整って見える』。</h2>
+      <p>$after</p>
+    </section>
+
+    <section class="lp-section" id="fit">
+      <p class="eyebrow">Why it fits</p>
+      <h2>この$fit_unitが、暮らしに効く3つの理由。</h2>
+      <ul class="benefit-list">
 $benefits
-        </ul>
-      </div>
-      <aside class="proof-card">
+      </ul>
+    </section>
+
+    <section class="lp-section rakuten-section" id="rakuten">
+      <div class="rakuten-card">
         <p class="eyebrow">Rakuten Check</p>
+        <h2>価格・在庫は、楽天で要確認。</h2>
+        <p>価格、レビュー、配送条件、在庫はショップ側で変わります。購入前に楽天の商品ページで最新情報を確認してください。</p>
         <div class="proof-grid">
 $proof_badges
         </div>
-        <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で探す</a>
-      </aside>
+        <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">価格・在庫を見る</a>
+      </div>
     </section>
 
     <section class="lp-section">
@@ -593,10 +684,6 @@ $scenes
         <div>
           <h3>印象の残り方</h3>
           <p>$impression</p>
-        </div>
-        <div>
-          <h3>購入前の確認</h3>
-          <p>$rakuten_note</p>
         </div>
       </div>
     </section>
@@ -619,8 +706,8 @@ $faq
 
     <section class="cta-panel">
       <p class="eyebrow">Final Check</p>
-      <h2>$titleを、今の暮らしに足すなら。</h2>
-      <p>$sub 在庫、価格、レビューはショップごとに変わります。購入前に楽天の商品ページで最新情報を確認してください。</p>
+      <h2>気になったら、在庫があるうちに。</h2>
+      <p>$final</p>
       <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で詳細を見る</a>
     </section>
   </main>
@@ -641,14 +728,16 @@ for product in products:
     copy = lp_copy(product)
     data = {key: html_escape(str(value)) for key, value in product.items()}
     data.update({key: html_escape(str(value)) for key, value in copy.items() if isinstance(value, str)})
-    data["benefits"] = list_items(copy["benefits"])
+    data["benefits"] = benefit_items(copy["benefits"], BENEFIT_LABELS.get(product["slug"]))
     data["scenes"] = list_items(copy["scenes"])
     data["faq"] = faq_items(copy["faq"])
     data["gallery"] = image_gallery(product)
     data["proof_badges"] = proof_badges(product)
     data["editor_note"] = html_escape(editor_note(copy))
-    data["rakuten_facts"] = rakuten_facts(product)
-    data["rakuten_note"] = html_escape(rakuten_note(product))
+    data["after"] = html_escape(after_copy(product, copy))
+    data["final"] = html_escape(final_copy(product, copy))
+    data["friction_target"] = html_escape(copy.get("friction_target", FRICTION_TARGETS[product["slug"]]))
+    data["fit_unit"] = html_escape(copy.get("fit_unit", product["title"].replace("セット", "").replace("ギフト", "")))
     data["description"] = html_escape(f"{product['title']}を暮らしに合うか確かめやすく紹介する楽天アフィリエイトLP。")
     out.write_text(product_template.substitute(data), encoding="utf-8")
 
@@ -667,6 +756,9 @@ privacy_template = Template("""<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="MENSVIEW SENSEのプライバシーポリシー。">
   <title>Privacy Policy | MENSVIEW SENSE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body id="top">
@@ -726,16 +818,20 @@ privacy_template = Template("""<!DOCTYPE html>
 
 css = r"""
 :root {
-  --ink: #2b2523;
-  --muted: #746965;
-  --line: #eadfd9;
-  --paper: #fffaf7;
-  --soft: #f6ebe7;
-  --blush: #d99b9a;
-  --rose: #b86d74;
+  --font-head: "Zen Kaku Gothic New", "Noto Sans JP", sans-serif;
+  --font-body: "Noto Sans JP", sans-serif;
+  --ink: #2b2b2b;
+  --muted: #6b6b6b;
+  --sub: #6b6b6b;
+  --line: #ece8e3;
+  --paper: #ffffff;
+  --soft: #f7f3ef;
+  --accent: #b08d72;
+  --rose: #b08d72;
   --sage: #8d9b84;
   --champagne: #d7b978;
   --shadow: 0 18px 50px rgba(86, 62, 52, .12);
+  --measure: 640px;
 }
 
 * { box-sizing: border-box; }
@@ -744,8 +840,10 @@ body {
   margin: 0;
   color: var(--ink);
   background: var(--paper);
-  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", system-ui, sans-serif;
-  line-height: 1.75;
+  font-family: var(--font-body);
+  line-height: 1.9;
+  font-size: 16px;
+  letter-spacing: .01em;
 }
 a { color: inherit; text-decoration: none; }
 img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -764,9 +862,10 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   backdrop-filter: blur(16px);
 }
 .brand {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-head);
+  font-weight: 700;
   font-size: clamp(18px, 2vw, 26px);
-  letter-spacing: 0;
+  letter-spacing: .02em;
 }
 .nav { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
 .nav a:hover { color: var(--rose); }
@@ -785,18 +884,24 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
   color: var(--rose);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0;
+  font-family: var(--font-head);
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 h1, h2, h3 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
-  font-weight: 500;
-  line-height: 1.18;
+  font-family: var(--font-head);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: .02em;
+  max-width: var(--measure);
+  text-wrap: balance;
+  word-break: auto-phrase;
 }
-h1 { font-size: clamp(42px, 6vw, 86px); }
-h2 { font-size: clamp(28px, 3.8vw, 52px); }
-h3 { font-size: clamp(20px, 2vw, 28px); }
+h1 { font-size: clamp(1.5rem, 5vw, 2rem); }
+h2 { font-size: clamp(1.25rem, 4vw, 1.6rem); margin-top: 2.4em; }
+h3 { font-size: clamp(1.05rem, 3vw, 1.2rem); font-weight: 500; }
+p, li { max-width: var(--measure); overflow-wrap: break-word; }
 .lead { max-width: 620px; color: var(--muted); font-size: clamp(16px, 1.4vw, 19px); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .button, .small-button {
@@ -809,6 +914,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   border-radius: 999px;
   background: var(--ink);
   color: #fff;
+  font-family: var(--font-head);
   font-weight: 700;
   cursor: pointer;
   transition: transform .2s ease, background .2s ease, color .2s ease;
@@ -915,7 +1021,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   border-bottom: 1px solid var(--line);
 }
 .category-band span { color: var(--rose); font-size: 13px; font-weight: 700; }
-.category-band strong { font-family: Georgia, "Times New Roman", serif; font-size: 24px; font-weight: 500; }
+.category-band strong { font-family: var(--font-head); font-size: 24px; font-weight: 700; }
 .category-band em { color: var(--muted); font-style: normal; }
 
 .product-hero {
@@ -976,6 +1082,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   gap: clamp(24px, 5vw, 70px);
   align-items: start;
 }
+.benefit-list,
 .check-list,
 .scene-grid ul {
   display: grid;
@@ -984,6 +1091,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   padding: 0;
   list-style: none;
 }
+.benefit-list li,
 .check-list li,
 .scene-grid li {
   position: relative;
@@ -991,6 +1099,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   border-top: 1px solid var(--line);
   color: var(--muted);
 }
+.benefit-list li::before,
 .check-list li::before,
 .scene-grid li::before {
   content: "";
@@ -1001,6 +1110,22 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   height: 9px;
   border-radius: 999px;
   background: var(--rose);
+}
+.benefit-list span {
+  display: block;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+}
+.benefit-list p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+.rakuten-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 1.4em 1.6em;
+  max-width: var(--measure);
 }
 .proof-card {
   position: sticky;
@@ -1069,8 +1194,9 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .faq-list summary {
   cursor: pointer;
-  font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+  font-family: var(--font-head);
   font-size: 22px;
+  font-weight: 700;
 }
 .faq-list p {
   margin: 12px 0 0;
