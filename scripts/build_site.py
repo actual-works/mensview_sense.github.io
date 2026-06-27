@@ -53,10 +53,11 @@ products = [normalize_product(product) for product in load_products()]
 LP_COPY = {
     "rattan-side-table": {
         "age": "20代後半から30代前半",
-        "editor": "同世代の男性編集者",
+        "editor": "編集メモ",
         "hero": "ソファ横の小さな余白まで整っている人は、部屋全体の印象まで丁寧に見える。",
         "problem": "部屋は片づいているのに、スマホ、読みかけの本、マグカップの置き場が定まらない。そんな小さな散らかりは、写真に写る一角や帰宅後の気分に意外と出ます。",
-        "male_view": "男性目線でも、こういう小さな家具を自然に使っている女性は、無理に飾っていないのに暮らしのセンスが伝わります。高価な家具より、余白の作り方が上手い人という印象です。",
+        "editor_note": "小さな家具ほど、置き方に暮らしのセンスが出ます。高価な家具を増やすより、余白の作り方を整えるほうが印象は変わります。",
+        "impression": "こういう小さな家具が自然に使われている部屋は、無理に飾っていないのに暮らしのセンスが伝わります。来客の視線が止まる一角にも、余白の作り方が残ります。",
         "benefits": [
             "ソファ横やベッドサイドに置くだけで、置き場の迷子を減らせる",
             "ラタン調の軽さで、北欧・韓国インテリアの雰囲気に合わせやすい",
@@ -74,10 +75,11 @@ LP_COPY = {
     },
     "fabric-wall-poster": {
         "age": "20代前半から30代前半",
-        "editor": "20代から30代の男性編集者",
+        "editor": "編集メモ",
         "hero": "壁に一枚、空気感があるだけで、部屋は“暮らしている場所”から“見せたい場所”に変わる。",
         "problem": "家具は揃えたのに、壁が白いままだと部屋が少し寂しい。だけどフレームや大きなアートは重いし、賃貸だと壁に穴を開けるのも気になります。",
-        "male_view": "同世代の男性から見ても、壁まで気を配っている女性の部屋は印象に残ります。派手ではなく、季節や気分に合わせて軽く変えられる感覚がセンスとして伝わります。",
+        "editor_note": "壁まで気を配ると、部屋全体の空気が少しだけ締まります。派手な装飾より、軽く替えられる余白があるほうが続けやすい。",
+        "impression": "壁まで気を配っている部屋は、誰が来ても印象に残りやすいもの。派手ではなく、季節や気分に合わせて軽く変えられる感覚がセンスとして伝わります。",
         "benefits": [
             "布のやわらかい質感で、壁の余白を軽く埋められる",
             "写真背景やオンライン会議の映り込みにも使いやすい",
@@ -95,10 +97,11 @@ LP_COPY = {
     },
     "candle-warmer-lamp": {
         "age": "20代後半から30代後半",
-        "editor": "30代男性編集者",
-        "hero": "夜の部屋に、灯りと香りをひとつ。自分の機嫌を整えられる人は、それだけで印象がやわらかくなる。",
+        "editor": "編集メモ",
+        "hero": "夜の部屋に、灯りと香りをひとつ。帰宅後の空気が整うと、部屋の印象までやわらかくなる。",
         "problem": "仕事や予定を終えて帰ってきても、部屋の照明が明るすぎると気持ちが切り替わらない。香りを楽しみたいけれど、火を使うキャンドルは少し気を使います。",
-        "male_view": "男性目線でも、夜の過ごし方を丁寧にしている女性は印象がいいです。誰かに見せるためではなく、自分の時間をきちんと扱っている感じが大人っぽく映ります。",
+        "editor_note": "夜の照明は、部屋の見え方を大きく変えます。明るさを落とすだけで、生活感が少し静かに見えます。",
+        "impression": "夜の過ごし方が丁寧な部屋は、来客にも落ち着いた印象が残ります。誰かに見せるためではなく、時間をきちんと扱っている感じが大人っぽく映ります。",
         "benefits": [
             "火を使わずにキャンドルの香りと雰囲気を楽しみやすい",
             "間接照明として、夜の部屋をやわらかく見せられる",
@@ -111,15 +114,16 @@ LP_COPY = {
         ],
         "faq": [
             ("キャンドル初心者でも使いやすいですか？", "火を使わないタイプなので、香りものを始めたい人にも取り入れやすい選択肢です。"),
-            ("プレゼント感はありますか？", "見た目に雰囲気があるため、自分用だけでなく親しい人へのギフトにも向いています。"),
+            ("プレゼント感はありますか？", "見た目に雰囲気があるため、日常用だけでなく親しい人へのギフトにも向いています。"),
         ],
     },
     "embroidery-starter-kit": {
         "age": "20代前半から30代前半",
-        "editor": "20代男性編集者",
+        "editor": "編集メモ",
         "hero": "スマホを置いて、手を動かす時間がある。そんな休日の過ごし方は、静かにセンスが出る。",
         "problem": "休みの日、気づくと動画やSNSだけで時間が過ぎている。何か作りたい気持ちはあるのに、道具を一つずつ揃えるのは面倒で始めにくいものです。",
-        "male_view": "同世代の男性から見ても、手芸やクラフトを自然に楽しむ女性は魅力的です。器用さよりも、自分の時間を楽しむ余裕がある人として映ります。",
+        "editor_note": "手を動かす趣味は、部屋に静かな表情を足してくれます。上手さより、暮らしに小さな余白を持てることが大事です。",
+        "impression": "手芸やクラフトを自然に楽しむ部屋には、ふと褒められる余白があります。器用さより、時間を楽しむ余裕がある場所として映ります。",
         "benefits": [
             "必要な道具がまとまっていて、初めてでも始めやすい",
             "完成後に飾れるので、趣味の時間が部屋のアクセントになる",
@@ -137,10 +141,11 @@ LP_COPY = {
     },
     "glass-flower-vase": {
         "age": "30代前半から40代前半",
-        "editor": "30代男性編集者",
+        "editor": "編集メモ",
         "hero": "花を一輪飾れる人は、部屋より先に気持ちの余白を整えているように見える。",
         "problem": "部屋に清潔感はあるのに、どこか生活だけで埋まっている感じがする。花やグリーンを飾りたいと思っても、花瓶選びで迷って先延ばしになりがちです。",
-        "male_view": "男性目線でも、玄関やテーブルに花がある女性の暮らしは印象に残ります。華やかすぎず、日常に少し余白を作れる人という感じがします。",
+        "editor_note": "花瓶は、部屋に余白をつくるための道具です。花を多く飾らなくても、一輪の置き場所があるだけで印象は変わります。",
+        "impression": "玄関やテーブルに花がある部屋は、来客の記憶に残りやすいもの。華やかすぎず、日常に少し余白を作れる場所という感じがします。",
         "benefits": [
             "透明感のあるガラスで、花の色やグリーンを邪魔しにくい",
             "一輪でも空間が整いやすく、初心者でも扱いやすい",
@@ -158,10 +163,11 @@ LP_COPY = {
     },
     "silk-night-cap": {
         "age": "20代後半から40代前半",
-        "editor": "30代男性編集者",
+        "editor": "編集メモ",
         "hero": "朝の髪が整っているだけで、一日の始まりに少し余裕が出る。",
         "problem": "寝ぐせや摩擦で、朝の髪が思うようにまとまらない。忙しい朝ほど、髪に時間を取られると気分まで急かされます。",
-        "male_view": "男性目線でも、髪を丁寧に扱っている女性は清潔感が伝わります。派手な美容より、毎日の小さなケアを続けている感じが自然に魅力的です。",
+        "editor_note": "清潔感は、派手な美容より日々の小さな積み重ねに出ます。眠る前の道具をひとつ整えるだけでも、朝の支度が変わります。",
+        "impression": "髪を丁寧に扱っている印象は、ふとした近さで伝わります。派手な美容より、毎日の小さなケアが自然な清潔感につながります。",
         "benefits": [
             "眠っている間の髪の摩擦対策として取り入れやすい",
             "朝のスタイリング前のまとまり感を意識したい人に合う",
@@ -179,10 +185,11 @@ LP_COPY = {
     },
     "pearl-accessory-tray": {
         "age": "20代前半から30代前半",
-        "editor": "20代男性編集者",
+        "editor": "編集メモ",
         "hero": "アクセサリーを外したあとまできれいな人は、細部にセンスが残る。",
         "problem": "ピアスやリングを外したあと、つい洗面台や棚の上に置いてしまう。小さなものほどなくしやすく、置きっぱなしの生活感も出やすいです。",
-        "male_view": "同世代の男性から見ても、アクセサリーの置き方まで整っている女性は印象がいいです。高価なものを持つことより、扱い方が丁寧な人に見えます。",
+        "editor_note": "小物の定位置があると、部屋の生活感はかなり抑えられます。高価なものを増やすより、扱い方を整えるほうが印象に残ります。",
+        "impression": "アクセサリーの置き方まで整っている空間は、細部まで気が届いて見えます。高価なものを持つことより、扱い方が丁寧な印象が残ります。",
         "benefits": [
             "毎日使うアクセサリーの定位置を作れる",
             "パール調の質感で、置くだけでもドレッサー周りが華やぐ",
@@ -200,10 +207,11 @@ LP_COPY = {
     },
     "jewelry-travel-pouch": {
         "age": "20代後半から30代後半",
-        "editor": "30代男性編集者",
+        "editor": "編集メモ",
         "hero": "旅先でもアクセサリーが絡まっていない。それだけで、準備の上手さが伝わる。",
         "problem": "旅行バッグにアクセサリーを入れると、チェーンが絡まったり片方だけ見つからなかったりする。せっかく服を選んでも、小物が整わないと気分が下がります。",
-        "male_view": "男性目線でも、旅先で小物まできれいに管理できる女性はスマートに見えます。荷物が多い少ないではなく、必要なものを丁寧に扱う感じが魅力です。",
+        "editor_note": "旅先の小物は、整理の上手さが出やすい場所です。荷物の量より、必要なものの扱い方が整っているかで印象が変わります。",
+        "impression": "旅先で小物まできれいに管理できると、準備の上手さが伝わります。荷物が多い少ないではなく、必要なものを丁寧に扱う感じが残ります。",
         "benefits": [
             "アクセサリーを分けて持ち運びやすい",
             "小型でバッグに入れやすく、週末旅行にも使いやすい",
@@ -221,14 +229,15 @@ LP_COPY = {
     },
     "healthy-nuts-gift": {
         "age": "30代前半から40代前半",
-        "editor": "30代男性編集者",
-        "hero": "甘いものだけに頼らない間食選びは、働く日の自分をちゃんと見ている感じがする。",
+        "editor": "編集メモ",
+        "hero": "甘いものだけに頼らない間食選びは、働く日のリズムをちゃんと見ている感じがする。",
         "problem": "仕事中や家事の合間、少し何か食べたい。でも甘いお菓子ばかりだと罪悪感が残るし、見た目も雑に置くと気分が上がりません。",
-        "male_view": "男性目線でも、間食まで自分に合うものを選んでいる女性は健康的で好印象です。無理な節制ではなく、日常の選び方が整っている感じがします。",
+        "editor_note": "間食は、デスクやキッチンの見え方にも出ます。甘いもの以外の選択肢があると、日常のリズムが整いやすい。",
+        "impression": "間食まで暮らしに合うものを選んでいると、健康的で落ち着いた印象になります。無理な節制ではなく、日常の選び方が整っている感じがします。",
         "benefits": [
             "デスクやキッチンに置きやすいヘルシー寄りの間食",
             "甘いものに偏らず、小腹満たしとして選びやすい",
-            "自分用にも、気を使わせない手土産にも使いやすい",
+            "日常用にも、気を使わせない手土産にも使いやすい",
         ],
         "scenes": [
             "在宅ワーク中の午後の小腹対策",
@@ -242,14 +251,15 @@ LP_COPY = {
     },
     "bath-salt-set": {
         "age": "30代前半から40代後半",
-        "editor": "30代後半男性編集者",
+        "editor": "編集メモ",
         "hero": "一日の終わりを雑にしない人は、疲れていてもどこか品がある。",
         "problem": "忙しい日ほど、入浴がただの作業になりがち。気分を切り替えたいのに、スマホを見ながら一日が終わってしまうこともあります。",
-        "male_view": "男性目線でも、自分を労わる時間を持っている女性は落ち着いて見えます。頑張りすぎるより、きちんと休む習慣がある人の方が魅力的です。",
+        "editor_note": "一日の終わり方は、翌朝の余裕にもつながります。頑張りすぎる日ほど、休むための道具を決めておくと続けやすい。",
+        "impression": "労わる時間がある暮らしは、部屋にも落ち着きとして残ります。頑張りすぎるより、きちんと休む習慣がある場所のほうが感じよく見えます。",
         "benefits": [
             "バスタイムを気分転換の時間にしやすい",
             "香りや見た目で、セルフケア感を取り入れやすい",
-            "自分用にも、疲れている友人へのプチギフトにも向く",
+            "日常用にも、疲れている友人へのプチギフトにも向く",
         ],
         "scenes": [
             "仕事や家事で疲れた日の夜",
@@ -359,12 +369,7 @@ def proof_badges(product: dict) -> str:
 
 
 def editor_note(copy: dict) -> str:
-    view = copy["male_view"]
-    for prefix in ["男性目線でも、", "同世代の男性から見ても、"]:
-        if view.startswith(prefix):
-            view = view.removeprefix(prefix)
-            break
-    return f"{copy['editor']}から見ると、{view}"
+    return copy["editor_note"]
 
 
 def card(product):
@@ -390,7 +395,7 @@ index_template = Template("""<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Pinterestから見つけたい、暮らし・美容・ファッション・旅の楽天アイテムを上品にまとめるライフスタイル編集ページ。">
+  <meta name="description" content="同年代の男性編集者の目線で選ぶ、誰が来ても感じのいい部屋づくり。Home Decorを軸に、楽天ですぐ試せる1商品1ページのガイドです。">
   <title>MENSVIEW SENSE | Pinterest Lifestyle Edit</title>
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="assets/css/styles.css">
@@ -414,27 +419,31 @@ index_template = Template("""<!DOCTYPE html>
     <section class="hero">
       <div class="hero__copy reveal">
         <p class="eyebrow">Pinterest Lifestyle Edit</p>
-        <h1>部屋と私を、少しだけ上品に整える楽天セレクト。</h1>
-        <p class="lead">Home Decorを軸に、DIY、Beauty、Fashion、Food、Travel、Health、Gardeningまで。眺めて楽しく、買い物に進みやすい1商品1ページの編集型ガイドです。</p>
+        <h1>「なんかいい部屋」には、ちゃんと理由がある。</h1>
+        <p class="lead">大きな模様替えはいりません。清潔感・余白・抜け感。この3つが揃うと、部屋は不思議と感じよく見えます。同年代の編集者の目で選んだものを、楽天で買える“1商品1ページ”に分解しました。Home Decorを軸に、DIY・ビューティー・ファッションまで。</p>
         <div class="hero__actions">
           <a class="button" href="#latest">商品を見る</a>
           <a class="button button--ghost" href="#about">編集方針</a>
         </div>
       </div>
       <div class="hero__visual reveal">
-        <img src="assets/img/soft-editorial-atelier.png" alt="上品でガーリーなライフスタイル商品ページのビジュアル案">
+        <img src="assets/img/soft-editorial-atelier.png" alt="清潔感と余白を意識した編集型ライフスタイルページのビジュアル">
       </div>
     </section>
 
     <section class="intro-strip" id="about">
-      <p>清潔感、高級感、Girlyな余白。Pinterestで気になった商品を、楽天で探しやすい形に整えています。</p>
+      <div>
+        <p class="eyebrow">About</p>
+        <h2>このサイトについて</h2>
+        <p>同年代の男性編集者が、第三者の目線で「感じがいいな」と思った暮らしの道具を集めています。狙いは見せるための演出でも“ウケ狙い”でもなく、誰が来ても自然に整って見える部屋。Pinterestで見つけた雰囲気を、楽天で実際に試しやすい1商品1ページで紹介しています。</p>
+      </div>
           <button class="small-button" type="button" data-random-pick data-products="$product_slugs">今日のおすすめ</button>
     </section>
 
     <section class="section" id="latest">
       <div class="section__heading">
         <p class="eyebrow">Latest Picks</p>
-        <h2>最初の10アイテム</h2>
+        <h2>印象が変わる、最初の10アイテム</h2>
       </div>
       <div class="product-grid">
         $cards
@@ -444,9 +453,9 @@ index_template = Template("""<!DOCTYPE html>
     <section class="magazine section" id="decor">
       <div>
         <p class="eyebrow">Main Theme</p>
-        <h2>Home Decorから始める、小さな模様替え。</h2>
+        <h2>Home Decorから始める、「感じのいい部屋」。</h2>
       </div>
-      <p>大きな家具を買い替えなくても、ライト、壁飾り、花瓶、サイドテーブルで部屋の印象は変えられます。まずは写真に写りやすい一角から整えるのがおすすめです。</p>
+      <p>大きな家具を買い替えなくても、ライト、壁飾り、花瓶、サイドテーブルで部屋の印象は変えられます。最初に目がいくのは、生活感が出やすい一角。来客の視線が止まる場所でもあります。写真にも写るその一角から整えるのが、いちばん効率がいい。</p>
     </section>
 
     <section class="category-bands section">
@@ -543,7 +552,7 @@ product_template = Template("""<!DOCTYPE html>
         <p class="editor-note">$editor_note</p>
         <div class="hero__actions">
           <a class="button" id="rakuten" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で詳細を見る</a>
-          <a class="button button--ghost" href="#fit">自分に合うか見る</a>
+          <a class="button button--ghost" href="#fit">暮らしに合うか見る</a>
         </div>
       </div>
     </article>
@@ -583,7 +592,7 @@ $scenes
         </div>
         <div>
           <h3>印象の残り方</h3>
-          <p>$male_view</p>
+          <p>$impression</p>
         </div>
         <div>
           <h3>購入前の確認</h3>
@@ -640,7 +649,7 @@ for product in products:
     data["editor_note"] = html_escape(editor_note(copy))
     data["rakuten_facts"] = rakuten_facts(product)
     data["rakuten_note"] = html_escape(rakuten_note(product))
-    data["description"] = html_escape(f"{product['title']}を女性本人向けに、同世代男性編集者の視点も添えて紹介する楽天アフィリエイトLP。")
+    data["description"] = html_escape(f"{product['title']}を暮らしに合うか確かめやすく紹介する楽天アフィリエイトLP。")
     out.write_text(product_template.substitute(data), encoding="utf-8")
 
 
@@ -823,6 +832,10 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+}
+.intro-strip h2 {
+  margin: 0 0 10px;
+  font-size: clamp(22px, 2.4vw, 34px);
 }
 .intro-strip p { max-width: 780px; margin: 0; color: var(--muted); }
 .small-button { min-height: 40px; border-color: var(--rose); background: var(--rose); white-space: nowrap; }
