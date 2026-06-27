@@ -1,13 +1,251 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Site</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pinterestから見つけたい、暮らし・美容・ファッション・旅の楽天アイテムを上品にまとめるライフスタイル編集ページ。">
+  <title>MENSVIEW SENSE | Pinterest Lifestyle Edit</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
-    <h1>Hello, World!</h1>
-    <p>Welcome to my site.</p>
+<body id="top">
+  <header class="site-header" data-header>
+    <a class="brand" href="index.html">MENSVIEW SENSE</a>
+    <nav class="nav" aria-label="カテゴリ">
+      <a href="#decor">Decor</a>
+      <a href="products/embroidery-starter-kit.html">Craft</a>
+      <a href="products/silk-night-cap.html">Beauty</a>
+      <a href="products/jewelry-travel-pouch.html">Travel</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__copy reveal">
+        <p class="eyebrow">Pinterest Lifestyle Edit</p>
+        <h1>部屋と私を、少しだけ上品に整える楽天セレクト。</h1>
+        <p class="lead">Home Decorを軸に、DIY、Beauty、Fashion、Food、Travel、Health、Gardeningまで。眺めて楽しく、買い物に進みやすい1商品1ページの編集型ガイドです。</p>
+        <div class="hero__actions">
+          <a class="button" href="#latest">商品を見る</a>
+          <a class="button button--ghost" href="#about">編集方針</a>
+        </div>
+      </div>
+      <div class="hero__visual reveal">
+        <img src="assets/img/soft-editorial-atelier.png" alt="上品でガーリーなライフスタイル商品ページのビジュアル案">
+      </div>
+    </section>
+
+    <section class="intro-strip" id="about">
+      <p>清潔感、高級感、Girlyな余白。Pinterestで気になった商品を、楽天で探しやすい形に整えています。</p>
+          <button class="small-button" type="button" data-random-pick data-products="rattan-side-table,fabric-wall-poster,candle-warmer-lamp,embroidery-starter-kit,glass-flower-vase,silk-night-cap,pearl-accessory-tray,jewelry-travel-pouch,healthy-nuts-gift,bath-salt-set">今日のおすすめ</button>
+    </section>
+
+    <section class="section" id="latest">
+      <div class="section__heading">
+        <p class="eyebrow">Latest Picks</p>
+        <h2>最初の10アイテム</h2>
+      </div>
+      <div class="product-grid">
+        
+        <article class="product-card reveal" data-category="DIY Home Decor">
+          <a class="product-card__media" href="products/rattan-side-table.html" aria-label="ラタン調サイドテーブルの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=80" alt="ラタン調サイドテーブルのイメージ" loading="lazy">
+            <span>Room styling</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">DIY Home Decor</p>
+            <h3><a href="products/rattan-side-table.html">ラタン調サイドテーブル</a></h3>
+            <p>部屋の余白を整える、軽やかな小さめテーブル。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Wall Decor">
+          <a class="product-card__media" href="products/fabric-wall-poster.html" aria-label="ファブリックポスターの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1400&q=80" alt="ファブリックポスターのイメージ" loading="lazy">
+            <span>Wall edit</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Wall Decor</p>
+            <h3><a href="products/fabric-wall-poster.html">ファブリックポスター</a></h3>
+            <p>壁を傷つけにくく、季節のムードを替えやすい布ポスター。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Lighting">
+          <a class="product-card__media" href="products/candle-warmer-lamp.html" aria-label="キャンドルウォーマーランプの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1400&q=80" alt="キャンドルウォーマーランプのイメージ" loading="lazy">
+            <span>Soft glow</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Lighting</p>
+            <h3><a href="products/candle-warmer-lamp.html">キャンドルウォーマーランプ</a></h3>
+            <p>火を使わず、灯りと香りの雰囲気を楽しむ卓上ライト。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="DIY and Crafts">
+          <a class="product-card__media" href="products/embroidery-starter-kit.html" aria-label="刺繍スターターキットの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1400&q=80" alt="刺繍スターターキットのイメージ" loading="lazy">
+            <span>Craft mood</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">DIY and Crafts</p>
+            <h3><a href="products/embroidery-starter-kit.html">刺繍スターターキット</a></h3>
+            <p>週末に始めやすい、道具がまとまったクラフトキット。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Gardening">
+          <a class="product-card__media" href="products/glass-flower-vase.html" aria-label="ガラスフラワーベースの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1400&q=80" alt="ガラスフラワーベースのイメージ" loading="lazy">
+            <span>Fresh corner</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Gardening</p>
+            <h3><a href="products/glass-flower-vase.html">ガラスフラワーベース</a></h3>
+            <p>一輪でも空間が整う、透明感のあるフラワーベース。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Beauty">
+          <a class="product-card__media" href="products/silk-night-cap.html" aria-label="シルクナイトキャップの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80" alt="シルクナイトキャップのイメージ" loading="lazy">
+            <span>Night care</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Beauty</p>
+            <h3><a href="products/silk-night-cap.html">シルクナイトキャップ</a></h3>
+            <p>眠る時間の摩擦をやわらげたい人向けのヘアケア小物。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Women's Fashion">
+          <a class="product-card__media" href="products/pearl-accessory-tray.html" aria-label="パール調アクセサリートレイの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80" alt="パール調アクセサリートレイのイメージ" loading="lazy">
+            <span>Accessory edit</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Women's Fashion</p>
+            <h3><a href="products/pearl-accessory-tray.html">パール調アクセサリートレイ</a></h3>
+            <p>アクセサリーを置くだけで絵になる、小さな見せる収納。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Travel">
+          <a class="product-card__media" href="products/jewelry-travel-pouch.html" aria-label="ジュエリートラベルポーチの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="ジュエリートラベルポーチのイメージ" loading="lazy">
+            <span>Travel pretty</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Travel</p>
+            <h3><a href="products/jewelry-travel-pouch.html">ジュエリートラベルポーチ</a></h3>
+            <p>旅先でもアクセサリーをきれいに持ち運ぶ小型ポーチ。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Food and Drinks">
+          <a class="product-card__media" href="products/healthy-nuts-gift.html" aria-label="低糖質ナッツギフトの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=1400&q=80" alt="低糖質ナッツギフトのイメージ" loading="lazy">
+            <span>Smart snack</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Food and Drinks</p>
+            <h3><a href="products/healthy-nuts-gift.html">低糖質ナッツギフト</a></h3>
+            <p>デスクやおやつ時間に置きやすい、見た目も整ったヘルシースナック。</p>
+          </div>
+        </article>
+
+        <article class="product-card reveal" data-category="Health">
+          <a class="product-card__media" href="products/bath-salt-set.html" aria-label="バスソルトセットの詳細を見る">
+            <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=80" alt="バスソルトセットのイメージ" loading="lazy">
+            <span>Bath ritual</span>
+          </a>
+          <div class="product-card__body">
+            <p class="eyebrow">Health</p>
+            <h3><a href="products/bath-salt-set.html">バスソルトセット</a></h3>
+            <p>一日の終わりに気分を切り替える、香りのあるバスタイム小物。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="magazine section" id="decor">
+      <div>
+        <p class="eyebrow">Main Theme</p>
+        <h2>Home Decorから始める、小さな模様替え。</h2>
+      </div>
+      <p>大きな家具を買い替えなくても、ライト、壁飾り、花瓶、サイドテーブルで部屋の印象は変えられます。まずは写真に写りやすい一角から整えるのがおすすめです。</p>
+    </section>
+
+    <section class="category-bands section">
+      
+        <a class="category-band reveal" href="products/rattan-side-table.html">
+          <span>DIY Home Decor</span>
+          <strong>ラタン調サイドテーブル</strong>
+          <em>ソファ横やベッドサイドに置くだけで、部屋の雰囲気がやわらかくまとまる定番アイテム。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/fabric-wall-poster.html">
+          <span>Wall Decor</span>
+          <strong>ファブリックポスター</strong>
+          <em>殺風景な壁に、軽い質感とアート感を足せるPinterest向きのウォールデコ。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/candle-warmer-lamp.html">
+          <span>Lighting</span>
+          <strong>キャンドルウォーマーランプ</strong>
+          <em>夜の部屋を少しだけ特別に見せたい日に、やわらかな光で印象を変えるアイテム。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/embroidery-starter-kit.html">
+          <span>DIY and Crafts</span>
+          <strong>刺繍スターターキット</strong>
+          <em>手作り時間を楽しみたい人に向けた、飾ってもかわいいDIY入門セット。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/glass-flower-vase.html">
+          <span>Gardening</span>
+          <strong>ガラスフラワーベース</strong>
+          <em>花やグリーンを気軽に飾りたい部屋に、軽やかな抜け感をつくる小物。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/silk-night-cap.html">
+          <span>Beauty</span>
+          <strong>シルクナイトキャップ</strong>
+          <em>朝の髪を扱いやすく整えたい日に取り入れやすい、ギフト感のある美容アイテム。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/pearl-accessory-tray.html">
+          <span>Women's Fashion</span>
+          <strong>パール調アクセサリートレイ</strong>
+          <em>毎日使うピアスやリングを、なくしにくく美しくまとめたい人に。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/jewelry-travel-pouch.html">
+          <span>Travel</span>
+          <strong>ジュエリートラベルポーチ</strong>
+          <em>旅行バッグの中で絡まりやすいアクセサリーを、上品に分けて収納できる便利アイテム。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/healthy-nuts-gift.html">
+          <span>Food and Drinks</span>
+          <strong>低糖質ナッツギフト</strong>
+          <em>甘いものに寄りすぎない手土産や、自分用の軽い間食として選びやすいセット。</em>
+        </a>
+
+        <a class="category-band reveal" href="products/bath-salt-set.html">
+          <span>Health</span>
+          <strong>バスソルトセット</strong>
+          <em>疲れた日のルーティンを少し丁寧にしたい人へ。見た目もギフト向きのセルフケアアイテム。</em>
+        </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Rakuten affiliate links can be swapped in through the product data. Product availability and prices may change.</p>
+    <a href="#top" data-back-top>Back to top</a>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
-
