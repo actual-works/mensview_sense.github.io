@@ -18,4 +18,4 @@ Rakuten Affiliate/API credentials are not committed. Current CTA URLs use Rakute
 
 ## Product Page Generation
 
-Run `python3 scripts/build_site.py` after adding or updating a product. The generator applies `PRODUCT_PAGE_RULES.md` by default to existing and new product LPs.
+Run `python3 scripts/build_site.py` after adding or updating a product. The generator applies `PRODUCT_PAGE_RULES.md` by default to existing and new product LPs, including the generated AI image slots for `friction`, `after`, and `fit`.

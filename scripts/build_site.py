@@ -368,6 +368,15 @@ def image_gallery(product: dict) -> str:
     )
 
 
+def ai_scene_image(product: dict, stage: str, label: str) -> str:
+    path = f"../assets/img/generated/product-scenes/{product['slug']}-{stage}.jpg"
+    return f"""
+      <figure class="ai-scene">
+        <img src="{html_escape(path)}" alt="{html_escape(product['title'])}の{html_escape(label)}を想起する生成AIイメージ" loading="lazy">
+        <figcaption>これは生成AIによるイメージ画像です</figcaption>
+      </figure>"""
+
+
 def proof_badges(product: dict) -> str:
     rows = []
     if product.get("itemPrice"):
@@ -643,12 +652,14 @@ product_template = Template("""<!DOCTYPE html>
       <p class="eyebrow">Small Friction</p>
       <h2>きっかけは、いつも“$friction_target”。</h2>
       <p>$problem</p>
+$friction_image
     </section>
 
     <section class="lp-section">
       <p class="eyebrow">After</p>
       <h2>$titleがあるだけで、その一角が『整って見える』。</h2>
       <p>$after</p>
+$after_image
     </section>
 
     <section class="lp-section" id="fit">
@@ -657,6 +668,7 @@ product_template = Template("""<!DOCTYPE html>
       <ul class="benefit-list">
 $benefits
       </ul>
+$fit_image
     </section>
 
     <section class="lp-section rakuten-section" id="rakuten">
@@ -736,6 +748,9 @@ for product in products:
     data["editor_note"] = html_escape(editor_note(copy))
     data["after"] = html_escape(after_copy(product, copy))
     data["final"] = html_escape(final_copy(product, copy))
+    data["friction_image"] = ai_scene_image(product, "friction", "小さな違和感")
+    data["after_image"] = ai_scene_image(product, "after", "購入後の情景")
+    data["fit_image"] = ai_scene_image(product, "fit", "暮らしに効く理由")
     data["friction_target"] = html_escape(copy.get("friction_target", FRICTION_TARGETS[product["slug"]]))
     data["fit_unit"] = html_escape(copy.get("fit_unit", product["title"].replace("セット", "").replace("ギフト", "")))
     data["description"] = html_escape(f"{product['title']}を暮らしに合うか確かめやすく紹介する楽天アフィリエイトLP。")
@@ -1067,6 +1082,22 @@ p, li { max-width: var(--measure); overflow-wrap: break-word; }
   max-width: 860px;
   color: var(--muted);
   font-size: 17px;
+}
+.ai-scene {
+  max-width: min(980px, 100%);
+  margin: 28px 0 0;
+}
+.ai-scene img {
+  aspect-ratio: 3 / 2;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f4f1ee;
+}
+.ai-scene figcaption {
+  margin-top: 8px;
+  color: rgba(107, 107, 107, .68);
+  font-size: 12px;
+  line-height: 1.6;
 }
 .lp-problem {
   background: #fffdfb;

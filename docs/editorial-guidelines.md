@@ -4,6 +4,7 @@
 
 - For Rakuten affiliate product LPs, `PRODUCT_PAGE_RULES.md` is the default source of truth.
 - New product pages should follow its section order, CTA roles, typography rules, NG vocabulary check, and "楽天で要確認" price/stock wording.
+- New product pages should write the `friction`, `after`, and `fit` copy first, then generate one product-referenced AI image for each section and display the required AI image disclosure under each image.
 - `scripts/build_site.py` owns the generated HTML structure, so update that generator before editing generated `products/*.html` by hand.
 
 ## Persona

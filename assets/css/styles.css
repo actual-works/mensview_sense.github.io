@@ -249,6 +249,22 @@ p, li { max-width: var(--measure); overflow-wrap: break-word; }
   color: var(--muted);
   font-size: 17px;
 }
+.ai-scene {
+  max-width: min(980px, 100%);
+  margin: 28px 0 0;
+}
+.ai-scene img {
+  aspect-ratio: 3 / 2;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #f4f1ee;
+}
+.ai-scene figcaption {
+  margin-top: 8px;
+  color: rgba(107, 107, 107, .68);
+  font-size: 12px;
+  line-height: 1.6;
+}
 .lp-problem {
   background: #fffdfb;
 }
