@@ -1,133 +1,53 @@
 from pathlib import Path
 from string import Template
 import json
-import re
 from urllib.parse import quote
 
 
 ROOT = Path(__file__).resolve().parents[1]
+PRODUCTS_PATH = ROOT / "assets" / "data" / "products.json"
 
 
-products = [
-    {
-        "slug": "rattan-side-table",
-        "title": "ラタン調サイドテーブル",
-        "category": "DIY Home Decor",
-        "sub": "部屋の余白を整える、軽やかな小さめテーブル。",
-        "hook": "ソファ横やベッドサイドに置くだけで、部屋の雰囲気がやわらかくまとまる定番アイテム。",
-        "best_for": "一人暮らしのリビング、寝室、読書コーナー",
-        "keywords": "ラタン サイドテーブル 北欧 韓国 インテリア",
-        "image": "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Room styling",
-    },
-    {
-        "slug": "fabric-wall-poster",
-        "title": "ファブリックポスター",
-        "category": "Wall Decor",
-        "sub": "壁を傷つけにくく、季節のムードを替えやすい布ポスター。",
-        "hook": "殺風景な壁に、軽い質感とアート感を足せるPinterest向きのウォールデコ。",
-        "best_for": "寝室、ワークスペース、撮影背景",
-        "keywords": "ファブリックポスター 韓国 インテリア 壁掛け",
-        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Wall edit",
-    },
-    {
-        "slug": "candle-warmer-lamp",
-        "title": "キャンドルウォーマーランプ",
-        "category": "Lighting",
-        "sub": "火を使わず、灯りと香りの雰囲気を楽しむ卓上ライト。",
-        "hook": "夜の部屋を少しだけ特別に見せたい日に、やわらかな光で印象を変えるアイテム。",
-        "best_for": "ベッドサイド、ナイトルーティン、ギフト",
-        "keywords": "キャンドルウォーマー ランプ アロマ 照明",
-        "image": "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Soft glow",
-    },
-    {
-        "slug": "embroidery-starter-kit",
-        "title": "刺繍スターターキット",
-        "category": "DIY and Crafts",
-        "sub": "週末に始めやすい、道具がまとまったクラフトキット。",
-        "hook": "手作り時間を楽しみたい人に向けた、飾ってもかわいいDIY入門セット。",
-        "best_for": "休日の趣味、ギフト、親子クラフト",
-        "keywords": "刺繍キット 初心者 手芸 DIY",
-        "image": "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Craft mood",
-    },
-    {
-        "slug": "glass-flower-vase",
-        "title": "ガラスフラワーベース",
-        "category": "Gardening",
-        "sub": "一輪でも空間が整う、透明感のあるフラワーベース。",
-        "hook": "花やグリーンを気軽に飾りたい部屋に、軽やかな抜け感をつくる小物。",
-        "best_for": "玄関、ダイニング、窓辺",
-        "keywords": "ガラス 花瓶 フラワーベース おしゃれ",
-        "image": "https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Fresh corner",
-    },
-    {
-        "slug": "silk-night-cap",
-        "title": "シルクナイトキャップ",
-        "category": "Beauty",
-        "sub": "眠る時間の摩擦をやわらげたい人向けのヘアケア小物。",
-        "hook": "朝の髪を扱いやすく整えたい日に取り入れやすい、ギフト感のある美容アイテム。",
-        "best_for": "ナイトケア、旅行、ギフト",
-        "keywords": "シルク ナイトキャップ ヘアケア",
-        "image": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Night care",
-    },
-    {
-        "slug": "pearl-accessory-tray",
-        "title": "パール調アクセサリートレイ",
-        "category": "Women's Fashion",
-        "sub": "アクセサリーを置くだけで絵になる、小さな見せる収納。",
-        "hook": "毎日使うピアスやリングを、なくしにくく美しくまとめたい人に。",
-        "best_for": "ドレッサー、玄関、撮影小物",
-        "keywords": "アクセサリートレイ パール 小物入れ",
-        "image": "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Accessory edit",
-    },
-    {
-        "slug": "jewelry-travel-pouch",
-        "title": "ジュエリートラベルポーチ",
-        "category": "Travel",
-        "sub": "旅先でもアクセサリーをきれいに持ち運ぶ小型ポーチ。",
-        "hook": "旅行バッグの中で絡まりやすいアクセサリーを、上品に分けて収納できる便利アイテム。",
-        "best_for": "週末旅行、出張、温泉旅",
-        "keywords": "ジュエリーポーチ 旅行 アクセサリーケース",
-        "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Travel pretty",
-    },
-    {
-        "slug": "healthy-nuts-gift",
-        "title": "低糖質ナッツギフト",
-        "category": "Food and Drinks",
-        "sub": "デスクやおやつ時間に置きやすい、見た目も整ったヘルシースナック。",
-        "hook": "甘いものに寄りすぎない手土産や、自分用の軽い間食として選びやすいセット。",
-        "best_for": "在宅ワーク、ギフト、置き菓子",
-        "keywords": "低糖質 ナッツ ギフト ヘルシー おやつ",
-        "image": "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Smart snack",
-    },
-    {
-        "slug": "bath-salt-set",
-        "title": "バスソルトセット",
-        "category": "Health",
-        "sub": "一日の終わりに気分を切り替える、香りのあるバスタイム小物。",
-        "hook": "疲れた日のルーティンを少し丁寧にしたい人へ。見た目もギフト向きのセルフケアアイテム。",
-        "best_for": "バスタイム、セルフケア、プチギフト",
-        "keywords": "バスソルト 入浴剤 ギフト セルフケア",
-        "image": "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=80",
-        "accent": "Bath ritual",
-    },
-]
+def load_products() -> list[dict]:
+    if not PRODUCTS_PATH.exists():
+        raise SystemExit(f"Missing product data: {PRODUCTS_PATH}")
+    return json.loads(PRODUCTS_PATH.read_text(encoding="utf-8"))
 
 
 def rakuten_url(keywords: str) -> str:
     return "https://search.rakuten.co.jp/search/mall/" + quote(keywords)
 
 
-for product in products:
-    product["url"] = rakuten_url(product["keywords"])
+def normalize_product(product: dict) -> dict:
+    normalized = dict(product)
+    normalized["url"] = (
+        normalized.get("affiliateUrl")
+        or normalized.get("itemUrl")
+        or normalized.get("url")
+        or rakuten_url(normalized["keywords"])
+    )
+    normalized["image"] = (
+        normalized.get("image")
+        or first_url(normalized.get("largeImageUrls"))
+        or first_url(normalized.get("mediumImageUrls"))
+        or first_url(normalized.get("smallImageUrls"))
+    )
+    normalized["tracking_id"] = normalized.get("tracking_id") or f"pinterest-{normalized['slug']}"
+    return normalized
+
+
+def first_url(value) -> str:
+    if not value:
+        return ""
+    if isinstance(value, str):
+        return value
+    first = value[0]
+    if isinstance(first, str):
+        return first
+    return first.get("imageUrl", "")
+
+
+products = [normalize_product(product) for product in load_products()]
 
 
 def html_escape(value: str) -> str:
@@ -139,7 +59,39 @@ def html_escape(value: str) -> str:
     )
 
 
+def product_meta(product: dict) -> str:
+    parts = []
+    if product.get("itemPrice"):
+        parts.append(f"¥{int(product['itemPrice']):,}")
+    if product.get("reviewAverage"):
+        parts.append(f"Review {product['reviewAverage']}")
+    if product.get("shopName"):
+        parts.append(product["shopName"])
+    return " / ".join(parts)
+
+
+def rakuten_facts(product: dict) -> str:
+    rows = []
+    if product.get("itemName"):
+        rows.append(("楽天商品名", product["itemName"]))
+    meta = product_meta(product)
+    if meta:
+        rows.append(("価格・レビュー", meta))
+    return "\n".join(
+        f"          <div><dt>{html_escape(label)}</dt><dd>{html_escape(str(value))}</dd></div>"
+        for label, value in rows
+    )
+
+
+def rakuten_note(product: dict) -> str:
+    if product.get("affiliateUrl"):
+        return "楽天市場の商品情報をもとに、商品ページへ進みやすい導線を用意しています。価格、レビュー、配送条件は購入前に楽天の商品ページで最新情報を確認してください。"
+    return "価格、レビュー、配送条件を見比べられるよう、楽天市場の検索導線に接続しています。購入前に楽天の商品ページで最新情報を確認してください。"
+
+
 def card(product):
+    meta = product_meta(product)
+    meta_html = f'<p class="product-card__meta">{html_escape(meta)}</p>' if meta else ""
     return f"""
         <article class="product-card reveal" data-category="{html_escape(product['category'])}">
           <a class="product-card__media" href="products/{product['slug']}.html" aria-label="{html_escape(product['title'])}の詳細を見る">
@@ -150,6 +102,7 @@ def card(product):
             <p class="eyebrow">{html_escape(product['category'])}</p>
             <h3><a href="products/{product['slug']}.html">{html_escape(product['title'])}</a></h3>
             <p>{html_escape(product['sub'])}</p>
+            {meta_html}
           </div>
         </article>"""
 
@@ -302,6 +255,7 @@ product_template = Template("""<!DOCTYPE html>
         <dl class="facts">
           <div><dt>おすすめシーン</dt><dd>$best_for</dd></div>
           <div><dt>探すキーワード</dt><dd>$keywords</dd></div>
+$rakuten_facts
         </dl>
         <a class="button" id="rakuten" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で探す</a>
       </div>
@@ -321,7 +275,7 @@ product_template = Template("""<!DOCTYPE html>
         </div>
         <div>
           <h3>楽天で比較しやすい</h3>
-          <p>価格、レビュー、配送条件を見比べられるよう、楽天市場の検索導線に接続しています。正式な楽天アフィリエイトURLがある場合は、このCTAを差し替えます。</p>
+          <p>$rakuten_note</p>
         </div>
       </div>
     </section>
@@ -347,6 +301,8 @@ product_template = Template("""<!DOCTYPE html>
 for product in products:
     out = ROOT / "products" / f"{product['slug']}.html"
     data = {key: html_escape(str(value)) for key, value in product.items()}
+    data["rakuten_facts"] = rakuten_facts(product)
+    data["rakuten_note"] = html_escape(rakuten_note(product))
     data["description"] = html_escape(f"{product['title']}をPinterest向けに紹介する日本語LP。楽天で比較しやすい検索導線つき。")
     out.write_text(product_template.substitute(data), encoding="utf-8")
 
@@ -505,6 +461,12 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .product-card__body { padding: 18px; }
 .product-card__body p:last-child { color: var(--muted); margin-bottom: 0; font-size: 14px; }
+.product-card__meta {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--rose);
+}
 
 .magazine {
   display: grid;

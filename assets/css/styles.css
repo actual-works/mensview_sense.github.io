@@ -144,6 +144,12 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .product-card__body { padding: 18px; }
 .product-card__body p:last-child { color: var(--muted); margin-bottom: 0; font-size: 14px; }
+.product-card__meta {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+  color: var(--rose);
+}
 
 .magazine {
   display: grid;
