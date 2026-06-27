@@ -220,6 +220,31 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 }
 .cta-panel p { max-width: 680px; color: var(--muted); }
 
+.legal-page {
+  padding: clamp(42px, 7vw, 92px) clamp(18px, 5vw, 72px);
+}
+.legal-hero {
+  max-width: 860px;
+  margin-bottom: clamp(32px, 5vw, 56px);
+}
+.legal-body {
+  max-width: 920px;
+  display: grid;
+  gap: 16px;
+}
+.legal-body h2 {
+  margin-top: 18px;
+  font-size: clamp(22px, 2.5vw, 34px);
+}
+.legal-body p {
+  margin: 0;
+  color: var(--muted);
+}
+.legal-updated {
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+}
+
 .footer {
   display: flex;
   justify-content: space-between;
