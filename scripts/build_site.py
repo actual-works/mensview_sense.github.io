@@ -50,6 +50,220 @@ def first_url(value) -> str:
 products = [normalize_product(product) for product in load_products()]
 
 
+LP_COPY = {
+    "rattan-side-table": {
+        "age": "20代後半から30代前半",
+        "editor": "同世代の男性編集者",
+        "hero": "ソファ横の小さな余白まで整っている人は、部屋全体の印象まで丁寧に見える。",
+        "problem": "部屋は片づいているのに、スマホ、読みかけの本、マグカップの置き場が定まらない。そんな小さな散らかりは、写真に写る一角や帰宅後の気分に意外と出ます。",
+        "male_view": "男性目線でも、こういう小さな家具を自然に使っている女性は、無理に飾っていないのに暮らしのセンスが伝わります。高価な家具より、余白の作り方が上手い人という印象です。",
+        "benefits": [
+            "ソファ横やベッドサイドに置くだけで、置き場の迷子を減らせる",
+            "ラタン調の軽さで、北欧・韓国インテリアの雰囲気に合わせやすい",
+            "読書、メイク前の一時置き、夜のドリンク置きまで使い道が広い",
+        ],
+        "scenes": [
+            "休日にソファで本や動画を楽しむ時間",
+            "ベッド横にライトや香りものを置きたい夜",
+            "部屋の写真を撮ったとき、生活感を少し抑えたい一角",
+        ],
+        "faq": [
+            ("大きすぎませんか？", "幅45cm前後のサイドテーブルなので、主役家具というより余白を整える補助役として見やすいサイズ感です。"),
+            ("どんな部屋に合いますか？", "白、ベージュ、ウッド、観葉植物がある部屋と相性がよく、淡いインテリアに寄せたい人に向いています。"),
+        ],
+    },
+    "fabric-wall-poster": {
+        "age": "20代前半から30代前半",
+        "editor": "20代から30代の男性編集者",
+        "hero": "壁に一枚、空気感があるだけで、部屋は“暮らしている場所”から“見せたい場所”に変わる。",
+        "problem": "家具は揃えたのに、壁が白いままだと部屋が少し寂しい。だけどフレームや大きなアートは重いし、賃貸だと壁に穴を開けるのも気になります。",
+        "male_view": "同世代の男性から見ても、壁まで気を配っている女性の部屋は印象に残ります。派手ではなく、季節や気分に合わせて軽く変えられる感覚がセンスとして伝わります。",
+        "benefits": [
+            "布のやわらかい質感で、壁の余白を軽く埋められる",
+            "写真背景やオンライン会議の映り込みにも使いやすい",
+            "模様替えのハードルが低く、気分転換しやすい",
+        ],
+        "scenes": [
+            "ベッド横やデスク横の白い壁を整えたいとき",
+            "部屋で撮る写真の背景を少し可愛くしたいとき",
+            "季節ごとに部屋の雰囲気を変えたいとき",
+        ],
+        "faq": [
+            ("賃貸でも使いやすいですか？", "重い額装ではないため、壁を傷つけにくい設置方法を選びやすいのが魅力です。"),
+            ("子どもっぽく見えませんか？", "色柄を落ち着いたものにすると、大人の部屋にもなじみやすいウォールデコになります。"),
+        ],
+    },
+    "candle-warmer-lamp": {
+        "age": "20代後半から30代後半",
+        "editor": "30代男性編集者",
+        "hero": "夜の部屋に、灯りと香りをひとつ。自分の機嫌を整えられる人は、それだけで印象がやわらかくなる。",
+        "problem": "仕事や予定を終えて帰ってきても、部屋の照明が明るすぎると気持ちが切り替わらない。香りを楽しみたいけれど、火を使うキャンドルは少し気を使います。",
+        "male_view": "男性目線でも、夜の過ごし方を丁寧にしている女性は印象がいいです。誰かに見せるためではなく、自分の時間をきちんと扱っている感じが大人っぽく映ります。",
+        "benefits": [
+            "火を使わずにキャンドルの香りと雰囲気を楽しみやすい",
+            "間接照明として、夜の部屋をやわらかく見せられる",
+            "ベッドサイドやデスクに置くだけでセルフケア感が出る",
+        ],
+        "scenes": [
+            "仕事後に照明を落として一息つきたい夜",
+            "バスタイム後のスキンケアや読書時間",
+            "部屋で過ごす週末を少し特別にしたいとき",
+        ],
+        "faq": [
+            ("キャンドル初心者でも使いやすいですか？", "火を使わないタイプなので、香りものを始めたい人にも取り入れやすい選択肢です。"),
+            ("プレゼント感はありますか？", "見た目に雰囲気があるため、自分用だけでなく親しい人へのギフトにも向いています。"),
+        ],
+    },
+    "embroidery-starter-kit": {
+        "age": "20代前半から30代前半",
+        "editor": "20代男性編集者",
+        "hero": "スマホを置いて、手を動かす時間がある。そんな休日の過ごし方は、静かにセンスが出る。",
+        "problem": "休みの日、気づくと動画やSNSだけで時間が過ぎている。何か作りたい気持ちはあるのに、道具を一つずつ揃えるのは面倒で始めにくいものです。",
+        "male_view": "同世代の男性から見ても、手芸やクラフトを自然に楽しむ女性は魅力的です。器用さよりも、自分の時間を楽しむ余裕がある人として映ります。",
+        "benefits": [
+            "必要な道具がまとまっていて、初めてでも始めやすい",
+            "完成後に飾れるので、趣味の時間が部屋のアクセントになる",
+            "短時間でも進められて、休日の満足感につながりやすい",
+        ],
+        "scenes": [
+            "雨の日や家で過ごしたい休日",
+            "SNSから少し離れて手元に集中したい時間",
+            "作ったものを部屋に飾って小さな達成感を残したいとき",
+        ],
+        "faq": [
+            ("初心者でも大丈夫ですか？", "スターターキットなので、まず試してみたい人向けの入口として選びやすいです。"),
+            ("続くか不安です。", "大きな道具を揃える前に、小さく始められる点が向いています。"),
+        ],
+    },
+    "glass-flower-vase": {
+        "age": "30代前半から40代前半",
+        "editor": "30代男性編集者",
+        "hero": "花を一輪飾れる人は、部屋より先に気持ちの余白を整えているように見える。",
+        "problem": "部屋に清潔感はあるのに、どこか生活だけで埋まっている感じがする。花やグリーンを飾りたいと思っても、花瓶選びで迷って先延ばしになりがちです。",
+        "male_view": "男性目線でも、玄関やテーブルに花がある女性の暮らしは印象に残ります。華やかすぎず、日常に少し余白を作れる人という感じがします。",
+        "benefits": [
+            "透明感のあるガラスで、花の色やグリーンを邪魔しにくい",
+            "一輪でも空間が整いやすく、初心者でも扱いやすい",
+            "玄関、窓辺、ダイニングなど置き場所を選びにくい",
+        ],
+        "scenes": [
+            "週末に買った花をさっと飾りたいとき",
+            "玄関やダイニングに季節感を足したいとき",
+            "部屋の写真に自然な明るさを入れたいとき",
+        ],
+        "faq": [
+            ("花を頻繁に買わなくても使えますか？", "ドライフラワーや枝ものにも合わせやすく、毎週花を買わなくても活用できます。"),
+            ("どんなインテリアに合いますか？", "ガラスは主張が強すぎないため、ナチュラル、韓国、シンプル系の部屋になじみやすいです。"),
+        ],
+    },
+    "silk-night-cap": {
+        "age": "20代後半から40代前半",
+        "editor": "30代男性編集者",
+        "hero": "朝の髪が整っているだけで、一日の始まりに少し余裕が出る。",
+        "problem": "寝ぐせや摩擦で、朝の髪が思うようにまとまらない。忙しい朝ほど、髪に時間を取られると気分まで急かされます。",
+        "male_view": "男性目線でも、髪を丁寧に扱っている女性は清潔感が伝わります。派手な美容より、毎日の小さなケアを続けている感じが自然に魅力的です。",
+        "benefits": [
+            "眠っている間の髪の摩擦対策として取り入れやすい",
+            "朝のスタイリング前のまとまり感を意識したい人に合う",
+            "旅行や出張にも持っていきやすい美容小物",
+        ],
+        "scenes": [
+            "朝のヘアセットを少し楽にしたい平日",
+            "髪の乾燥や摩擦が気になる季節",
+            "旅先でもいつものナイトケアを崩したくないとき",
+        ],
+        "faq": [
+            ("美容に詳しくなくても使えますか？", "かぶって眠るだけなので、複雑なケアが苦手な人でも続けやすいアイテムです。"),
+            ("ギフトにも向きますか？", "サイズや好みは確認したいですが、美容に関心がある人への小さなギフトにも選びやすいです。"),
+        ],
+    },
+    "pearl-accessory-tray": {
+        "age": "20代前半から30代前半",
+        "editor": "20代男性編集者",
+        "hero": "アクセサリーを外したあとまできれいな人は、細部にセンスが残る。",
+        "problem": "ピアスやリングを外したあと、つい洗面台や棚の上に置いてしまう。小さなものほどなくしやすく、置きっぱなしの生活感も出やすいです。",
+        "male_view": "同世代の男性から見ても、アクセサリーの置き方まで整っている女性は印象がいいです。高価なものを持つことより、扱い方が丁寧な人に見えます。",
+        "benefits": [
+            "毎日使うアクセサリーの定位置を作れる",
+            "パール調の質感で、置くだけでもドレッサー周りが華やぐ",
+            "玄関、洗面台、ベッドサイドの小物置きにも使いやすい",
+        ],
+        "scenes": [
+            "帰宅後にリングやピアスを外すタイミング",
+            "朝の身支度でアクセサリーを選ぶ時間",
+            "撮影小物として手元の写真を整えたいとき",
+        ],
+        "faq": [
+            ("収納力はありますか？", "大容量収納というより、よく使う小物をきれいに置くための見せる収納です。"),
+            ("甘すぎませんか？", "小さめのトレイなら、パール調でも主張しすぎず上品に使いやすいです。"),
+        ],
+    },
+    "jewelry-travel-pouch": {
+        "age": "20代後半から30代後半",
+        "editor": "30代男性編集者",
+        "hero": "旅先でもアクセサリーが絡まっていない。それだけで、準備の上手さが伝わる。",
+        "problem": "旅行バッグにアクセサリーを入れると、チェーンが絡まったり片方だけ見つからなかったりする。せっかく服を選んでも、小物が整わないと気分が下がります。",
+        "male_view": "男性目線でも、旅先で小物まできれいに管理できる女性はスマートに見えます。荷物が多い少ないではなく、必要なものを丁寧に扱う感じが魅力です。",
+        "benefits": [
+            "アクセサリーを分けて持ち運びやすい",
+            "小型でバッグに入れやすく、週末旅行にも使いやすい",
+            "旅行先の洗面台やホテルでも置き場所を作れる",
+        ],
+        "scenes": [
+            "週末旅行や温泉旅にアクセサリーを持っていくとき",
+            "出張先でも手元のおしゃれを整えたいとき",
+            "バッグ内で小物を探す時間を減らしたいとき",
+        ],
+        "faq": [
+            ("普段使いできますか？", "旅行だけでなく、ジムや仕事後の予定でアクセサリーを持ち歩く日にも使えます。"),
+            ("大きすぎませんか？", "小型ポーチなので、必要な分だけ持ち運びたい人に向いています。"),
+        ],
+    },
+    "healthy-nuts-gift": {
+        "age": "30代前半から40代前半",
+        "editor": "30代男性編集者",
+        "hero": "甘いものだけに頼らない間食選びは、働く日の自分をちゃんと見ている感じがする。",
+        "problem": "仕事中や家事の合間、少し何か食べたい。でも甘いお菓子ばかりだと罪悪感が残るし、見た目も雑に置くと気分が上がりません。",
+        "male_view": "男性目線でも、間食まで自分に合うものを選んでいる女性は健康的で好印象です。無理な節制ではなく、日常の選び方が整っている感じがします。",
+        "benefits": [
+            "デスクやキッチンに置きやすいヘルシー寄りの間食",
+            "甘いものに偏らず、小腹満たしとして選びやすい",
+            "自分用にも、気を使わせない手土産にも使いやすい",
+        ],
+        "scenes": [
+            "在宅ワーク中の午後の小腹対策",
+            "甘い差し入れが続いた後のリセット気分",
+            "健康を気にする友人への軽いギフト",
+        ],
+        "faq": [
+            ("ダイエット食品ですか？", "特定の効果をうたうものではなく、甘いお菓子以外の間食候補として見るのが自然です。"),
+            ("ギフト感はありますか？", "相手の好みを選びすぎない食品系ギフトとして、軽く渡しやすいカテゴリです。"),
+        ],
+    },
+    "bath-salt-set": {
+        "age": "30代前半から40代後半",
+        "editor": "30代後半男性編集者",
+        "hero": "一日の終わりを雑にしない人は、疲れていてもどこか品がある。",
+        "problem": "忙しい日ほど、入浴がただの作業になりがち。気分を切り替えたいのに、スマホを見ながら一日が終わってしまうこともあります。",
+        "male_view": "男性目線でも、自分を労わる時間を持っている女性は落ち着いて見えます。頑張りすぎるより、きちんと休む習慣がある人の方が魅力的です。",
+        "benefits": [
+            "バスタイムを気分転換の時間にしやすい",
+            "香りや見た目で、セルフケア感を取り入れやすい",
+            "自分用にも、疲れている友人へのプチギフトにも向く",
+        ],
+        "scenes": [
+            "仕事や家事で疲れた日の夜",
+            "週末にゆっくり湯船につかりたいとき",
+            "気分を切り替えて眠る準備をしたい日",
+        ],
+        "faq": [
+            ("毎日使うものですか？", "毎日でなくても、疲れた日や週末だけのリチュアルとして取り入れやすいです。"),
+            ("ギフトに重くありませんか？", "セルフケア系の消耗品なので、相手に負担をかけにくいギフトとして選びやすいです。"),
+        ],
+    },
+}
+
+
 def html_escape(value: str) -> str:
     return (
         value.replace("&", "&amp;")
@@ -87,6 +301,70 @@ def rakuten_note(product: dict) -> str:
     if product.get("affiliateUrl"):
         return "楽天市場の商品情報をもとに、商品ページへ進みやすい導線を用意しています。価格、レビュー、配送条件は購入前に楽天の商品ページで最新情報を確認してください。"
     return "価格、レビュー、配送条件を見比べられるよう、楽天市場の検索導線に接続しています。購入前に楽天の商品ページで最新情報を確認してください。"
+
+
+def lp_copy(product: dict) -> dict:
+    return LP_COPY[product["slug"]]
+
+
+def list_items(items: list[str]) -> str:
+    return "\n".join(f"          <li>{html_escape(item)}</li>" for item in items)
+
+
+def faq_items(items: list[tuple[str, str]]) -> str:
+    return "\n".join(
+        f"""
+        <details>
+          <summary>{html_escape(question)}</summary>
+          <p>{html_escape(answer)}</p>
+        </details>"""
+        for question, answer in items
+    )
+
+
+def image_gallery(product: dict) -> str:
+    urls = []
+    for url in [product.get("image"), *product.get("mediumImageUrls", [])]:
+        if url and url not in urls:
+            urls.append(url)
+    return "\n".join(
+        f"""
+        <figure>
+          <img src="{html_escape(url)}" alt="{html_escape(product['title'])}の参考画像 {index}" loading="lazy">
+        </figure>"""
+        for index, url in enumerate(urls[:3], start=1)
+    )
+
+
+def proof_badges(product: dict) -> str:
+    rows = []
+    if product.get("itemPrice"):
+        rows.append(("価格目安", f"¥{int(product['itemPrice']):,}"))
+    if product.get("reviewAverage"):
+        review = f"{product['reviewAverage']}"
+        if product.get("reviewCount"):
+            review += f" / {int(product['reviewCount'])}件"
+        rows.append(("レビュー", review))
+    if product.get("shopName"):
+        rows.append(("ショップ", product["shopName"]))
+    rows.append(("確認先", "楽天市場"))
+    return "\n".join(
+        f"""
+        <div>
+          <span>{html_escape(label)}</span>
+          <strong>{html_escape(value)}</strong>
+        </div>"""
+        for label, value in rows
+    )
+
+
+def editor_note(copy: dict) -> str:
+    view = copy["male_view"]
+    for prefix in ["男性目線でも、", "同世代の男性から見ても、"]:
+        if view.startswith(prefix):
+            view = view.removeprefix(prefix)
+            break
+    return f"{copy['editor']}から見ると、{view}"
 
 
 def card(product):
@@ -243,7 +521,8 @@ product_template = Template("""<!DOCTYPE html>
     <a class="brand" href="../index.html">MENSVIEW SENSE</a>
     <nav class="nav" aria-label="ページ内">
       <a href="../index.html#latest">All Picks</a>
-      <a href="#why">Why</a>
+      <a href="#fit">Fit</a>
+      <a href="#faq">FAQ</a>
       <a href="#rakuten">Rakuten</a>
     </nav>
   </header>
@@ -253,47 +532,87 @@ product_template = Template("""<!DOCTYPE html>
   </div>
 
   <main>
-    <article class="product-hero">
+    <article class="product-hero lp-hero">
       <div class="product-hero__image reveal">
         <img src="$image" alt="$titleのイメージ">
       </div>
       <div class="product-hero__copy reveal">
-        <p class="eyebrow">$category</p>
+        <p class="eyebrow">$age / $category</p>
         <h1>$title</h1>
-        <p class="lead">$hook</p>
-        <dl class="facts">
-          <div><dt>おすすめシーン</dt><dd>$best_for</dd></div>
-          <div><dt>探すキーワード</dt><dd>$keywords</dd></div>
-$rakuten_facts
-        </dl>
-        <a class="button" id="rakuten" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で探す</a>
+        <p class="lead">$hero</p>
+        <p class="editor-note">$editor_note</p>
+        <div class="hero__actions">
+          <a class="button" id="rakuten" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で詳細を見る</a>
+          <a class="button button--ghost" href="#fit">自分に合うか見る</a>
+        </div>
       </div>
     </article>
 
-    <section class="detail-section" id="why">
-      <p class="eyebrow">Why it works</p>
-      <h2>選びやすいポイント</h2>
-      <div class="detail-grid">
+    <section class="lp-section lp-problem">
+      <p class="eyebrow">Small Friction</p>
+      <h2>買う理由は、大きな悩みより小さな違和感。</h2>
+      <p>$problem</p>
+    </section>
+
+    <section class="lp-section lp-split" id="fit">
+      <div>
+        <p class="eyebrow">Why it fits</p>
+        <h2>$titleが日常に効くポイント</h2>
+        <ul class="check-list">
+$benefits
+        </ul>
+      </div>
+      <aside class="proof-card">
+        <p class="eyebrow">Rakuten Check</p>
+        <div class="proof-grid">
+$proof_badges
+        </div>
+        <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で探す</a>
+      </aside>
+    </section>
+
+    <section class="lp-section">
+      <p class="eyebrow">Scene</p>
+      <h2>こんな場面で、ちゃんと使える。</h2>
+      <div class="scene-grid">
         <div>
-          <h3>写真に残したくなる見た目</h3>
-          <p>$sub</p>
+          <h3>使うシーン</h3>
+          <ul>
+$scenes
+          </ul>
         </div>
         <div>
-          <h3>暮らしに取り入れやすい</h3>
-          <p>大きな準備をしなくても使い始めやすく、日常の小さな満足感につながるアイテムとして紹介しています。</p>
+          <h3>印象の残り方</h3>
+          <p>$male_view</p>
         </div>
         <div>
-          <h3>楽天で比較しやすい</h3>
+          <h3>購入前の確認</h3>
           <p>$rakuten_note</p>
         </div>
       </div>
     </section>
 
+    <section class="lp-section product-gallery">
+      <p class="eyebrow">Product Images</p>
+      <h2>写真で質感を確認する。</h2>
+      <div class="gallery-grid">
+$gallery
+      </div>
+    </section>
+
+    <section class="lp-section" id="faq">
+      <p class="eyebrow">Before you buy</p>
+      <h2>迷いやすいところだけ、先に確認。</h2>
+      <div class="faq-list">
+$faq
+      </div>
+    </section>
+
     <section class="cta-panel">
-      <p class="eyebrow">Pinterest to Rakuten</p>
-      <h2>$titleを楽天でチェック</h2>
-      <p>在庫、価格、レビューはショップごとに変わります。購入前に商品ページで最新情報を確認してください。</p>
-      <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で探す</a>
+      <p class="eyebrow">Final Check</p>
+      <h2>$titleを、今の暮らしに足すなら。</h2>
+      <p>$sub 在庫、価格、レビューはショップごとに変わります。購入前に楽天の商品ページで最新情報を確認してください。</p>
+      <a class="button" href="$url" rel="nofollow sponsored noopener" target="_blank">楽天で詳細を見る</a>
     </section>
   </main>
 
@@ -310,10 +629,18 @@ $rakuten_facts
 
 for product in products:
     out = ROOT / "products" / f"{product['slug']}.html"
+    copy = lp_copy(product)
     data = {key: html_escape(str(value)) for key, value in product.items()}
+    data.update({key: html_escape(str(value)) for key, value in copy.items() if isinstance(value, str)})
+    data["benefits"] = list_items(copy["benefits"])
+    data["scenes"] = list_items(copy["scenes"])
+    data["faq"] = faq_items(copy["faq"])
+    data["gallery"] = image_gallery(product)
+    data["proof_badges"] = proof_badges(product)
+    data["editor_note"] = html_escape(editor_note(copy))
     data["rakuten_facts"] = rakuten_facts(product)
     data["rakuten_note"] = html_escape(rakuten_note(product))
-    data["description"] = html_escape(f"{product['title']}をPinterest向けに紹介する日本語LP。楽天で比較しやすい検索導線つき。")
+    data["description"] = html_escape(f"{product['title']}を女性本人向けに、同世代男性編集者の視点も添えて紹介する楽天アフィリエイトLP。")
     out.write_text(product_template.substitute(data), encoding="utf-8")
 
 
@@ -603,6 +930,139 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 .detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 26px; }
 .detail-grid > div { border-top: 1px solid var(--line); padding-top: 18px; }
 .detail-grid p { color: var(--muted); }
+.lp-hero .lead {
+  color: var(--ink);
+  font-size: clamp(18px, 1.8vw, 24px);
+}
+.editor-note {
+  margin: 18px 0 0;
+  padding: 16px 18px;
+  border-left: 3px solid var(--rose);
+  background: #fffdfb;
+  color: var(--muted);
+}
+.lp-section {
+  padding: clamp(42px, 7vw, 82px) clamp(18px, 5vw, 72px);
+}
+.lp-section > p {
+  max-width: 860px;
+  color: var(--muted);
+  font-size: 17px;
+}
+.lp-problem {
+  background: #fffdfb;
+}
+.lp-problem h2,
+.lp-section h2 {
+  max-width: 900px;
+  margin-bottom: 18px;
+}
+.lp-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: clamp(24px, 5vw, 70px);
+  align-items: start;
+}
+.check-list,
+.scene-grid ul {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.check-list li,
+.scene-grid li {
+  position: relative;
+  padding: 14px 0 14px 28px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+}
+.check-list li::before,
+.scene-grid li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 24px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--rose);
+}
+.proof-card {
+  position: sticky;
+  top: 96px;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdfb;
+  box-shadow: var(--shadow);
+}
+.proof-grid {
+  display: grid;
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+.proof-grid div {
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.proof-grid span {
+  display: block;
+  color: var(--rose);
+  font-size: 12px;
+  font-weight: 700;
+}
+.proof-grid strong {
+  display: block;
+  margin-top: 3px;
+  font-weight: 600;
+}
+.scene-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 26px;
+}
+.scene-grid > div {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.scene-grid p {
+  color: var(--muted);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 24px;
+}
+.gallery-grid figure {
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #fffdfb;
+}
+.faq-list {
+  display: grid;
+  gap: 12px;
+  max-width: 900px;
+  margin-top: 24px;
+}
+.faq-list details {
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+}
+.faq-list summary {
+  cursor: pointer;
+  font-family: Georgia, "Times New Roman", "Yu Mincho", serif;
+  font-size: 22px;
+}
+.faq-list p {
+  margin: 12px 0 0;
+  color: var(--muted);
+}
 .cta-panel {
   margin: clamp(42px, 7vw, 82px) clamp(18px, 5vw, 72px);
   padding: clamp(32px, 5vw, 58px);
@@ -649,10 +1109,12 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
 .reveal.is-visible { transform: translateY(0); }
 
 @media (max-width: 1000px) {
-  .hero, .product-hero, .magazine { grid-template-columns: 1fr; }
+  .hero, .product-hero, .magazine, .lp-split { grid-template-columns: 1fr; }
   .hero__visual { min-height: 360px; height: 50vh; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .detail-grid { grid-template-columns: 1fr; }
+  .detail-grid, .scene-grid { grid-template-columns: 1fr; }
+  .proof-card { position: static; }
+  .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 680px) {
   .site-header { align-items: flex-start; flex-direction: column; }
@@ -660,6 +1122,7 @@ h3 { font-size: clamp(20px, 2vw, 28px); }
   .hero__visual { min-height: 280px; border-radius: 18px; }
   .intro-strip, .section__heading, .footer { align-items: flex-start; flex-direction: column; }
   .product-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
   .category-band { grid-template-columns: 1fr; gap: 4px; }
   .product-hero__image { border-radius: 18px; }
 }
