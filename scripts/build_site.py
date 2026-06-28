@@ -117,6 +117,28 @@ LP_COPY = {
             ("プレゼント感はありますか？", "見た目に雰囲気があるため、日常用だけでなく親しい人へのギフトにも向いています。"),
         ],
     },
+    "aroma-diffuser": {
+        "age": "20代後半から40代前半",
+        "editor": "編集メモ",
+        "hero": "ドアを開けた瞬間の空気が整っていると、部屋全体まで丁寧に見える。",
+        "problem": "掃除をしていても、帰宅直後や寝る前の部屋の空気が少し重く感じることがあります。香りを足したいけれど、強すぎる芳香剤や火を使うキャンドルは続けにくいものです。",
+        "editor_note": "香りは見えないけれど、部屋の印象をかなり左右します。家具を増やすより先に、空気の切り替え方を決めると暮らしが整いやすい。",
+        "impression": "玄関やベッドサイドに自然な香りがある部屋は、来客にも清潔感が伝わりやすいもの。飾りすぎず、空気まで気を配っている感じが残ります。",
+        "benefits": [
+            "玄関や寝室に置くだけで、帰宅後や眠る前の空気を切り替えやすい",
+            "水なしタイプなら手入れの手間を抑えやすく、日常に組み込みやすい",
+            "小型の香り道具として、デスクやベッドサイドにも置きやすい",
+        ],
+        "scenes": [
+            "帰宅して玄関の空気を整えたいとき",
+            "夜の読書やスキンケア前に気分を切り替えたい時間",
+            "在宅ワーク中のデスク周りを少し落ち着かせたいとき",
+        ],
+        "faq": [
+            ("香りが強すぎませんか？", "香りの広がり方は部屋の広さやオイルで変わります。最初は短時間から試すと調整しやすいです。"),
+            ("手入れは面倒ですか？", "水なしタイプは水替えの手間が少ない一方、使うオイルや本体の説明に沿った定期的なケアは確認しておきたいところです。"),
+        ],
+    },
     "embroidery-starter-kit": {
         "age": "20代前半から30代前半",
         "editor": "編集メモ",
@@ -369,7 +391,9 @@ def image_gallery(product: dict) -> str:
 
 
 def ai_scene_image(product: dict, stage: str, label: str) -> str:
-    path = f"../assets/img/generated/product-scenes/{product['slug']}-{stage}.jpg"
+    image_path = ROOT / "assets" / "img" / "generated" / "product-scenes" / f"{product['slug']}-{stage}.png"
+    extension = "png" if image_path.exists() else "jpg"
+    path = f"../assets/img/generated/product-scenes/{product['slug']}-{stage}.{extension}"
     return f"""
       <figure class="ai-scene">
         <img src="{html_escape(path)}" alt="{html_escape(product['title'])}の{html_escape(label)}を想起する生成AIイメージ" loading="lazy">
@@ -407,6 +431,7 @@ AFTER_COPY = {
     "rattan-side-table": "帰宅して鍵を置く、夜にドリンクを置く。動作の受け皿が決まると散らかりが自然に減り、ソファ横やベッド横まで落ち着いて見えます。",
     "fabric-wall-poster": "一枚の布が入るだけで、白い壁にやわらかな奥行きが生まれます。写真の背景やデスク横まで、飾りすぎず整った印象に変わります。",
     "candle-warmer-lamp": "夜に灯りを落として香りを足すと、部屋の空気が静かに切り替わります。明るすぎない一角があるだけで、帰宅後の時間まで整って見えます。",
+    "aroma-diffuser": "玄関やベッドサイドに香りの定位置ができると、帰宅後や眠る前の空気が切り替わります。強く飾らなくても、清潔感のある一角として印象に残ります。",
     "embroidery-starter-kit": "針と糸に集中する時間ができると、休日の過ごし方に小さな余白が生まれます。完成後は部屋に飾れて、手を動かした跡もきれいに残ります。",
     "glass-flower-vase": "花を一輪置ける場所があると、玄関やテーブルに季節感が生まれます。透明な器なら主張しすぎず、日常の清潔感を自然に引き上げます。",
     "silk-night-cap": "眠る前の道具をひとつ決めるだけで、朝の支度に少し余裕が出ます。髪を整えたい気持ちが続きやすく、清潔感の土台を作れます。",
@@ -421,6 +446,7 @@ FRICTION_TARGETS = {
     "rattan-side-table": "小物の置き場",
     "fabric-wall-poster": "白い壁",
     "candle-warmer-lamp": "夜の照明",
+    "aroma-diffuser": "部屋の空気",
     "embroidery-starter-kit": "休日の過ごし方",
     "glass-flower-vase": "花を飾る場所",
     "silk-night-cap": "朝の髪",
@@ -435,6 +461,7 @@ BENEFIT_LABELS = {
     "rattan-side-table": ["置き場所が決まる", "軽い質感", "使い道が広い"],
     "fabric-wall-poster": ["壁の余白を整える", "背景にも使える", "模様替えしやすい"],
     "candle-warmer-lamp": ["火を使わない", "夜がやわらぐ", "置くだけで整う"],
+    "aroma-diffuser": ["空気を切り替える", "手入れしやすい", "小さく置ける"],
     "embroidery-starter-kit": ["始めやすい", "飾って楽しめる", "短時間で進む"],
     "glass-flower-vase": ["花を邪魔しない", "一輪でも足りる", "置き場所を選ばない"],
     "silk-night-cap": ["摩擦対策になる", "朝を整えやすい", "旅にも持てる"],
@@ -530,7 +557,7 @@ index_template = Template("""<!DOCTYPE html>
     <section class="section" id="latest">
       <div class="section__heading">
         <p class="eyebrow">Latest Picks</p>
-        <h2>印象が変わる、最初の10アイテム</h2>
+        <h2>印象が変わる、暮らしのアイテム</h2>
       </div>
       <div class="product-grid">
         $cards
@@ -566,6 +593,7 @@ category_order = [
     "DIY Home Decor",
     "Wall Decor",
     "Lighting",
+    "Home Fragrance",
     "DIY and Crafts",
     "Gardening",
     "Beauty",
@@ -1338,12 +1366,18 @@ Static Pinterest affiliate site for Cloudflare Pages.
 - `index.html` is the magazine-style front page.
 - `privacy.html` is the privacy policy page for app registration and site disclosure.
 - `products/` contains one LP-style page per product.
+- `images/` contains generated site design imagery that is not sourced from affiliate product tags.
 - `assets/data/products.json` is the product source used by the light UI behavior.
 - `assets/css/styles.css` and `assets/js/main.js` are dependency-free static assets.
+- `PRODUCT_PAGE_RULES.md` is the default rule set for Rakuten affiliate product LP generation.
 
 ## Affiliate Notes
 
 Rakuten Affiliate/API credentials are not committed. Current CTA URLs use Rakuten search URLs generated from product keywords and can be replaced with approved Rakuten affiliate URLs.
+
+## Product Page Generation
+
+Run `python3 scripts/build_site.py` after adding or updating a product. The generator applies `PRODUCT_PAGE_RULES.md` by default to existing and new product LPs, including the generated AI image slots for `friction`, `after`, and `fit`.
 """
 (ROOT / "README.md").write_text(readme, encoding="utf-8")
 

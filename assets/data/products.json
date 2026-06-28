@@ -304,5 +304,36 @@
     "shopName": "【公式】EASECBD",
     "reviewAverage": 4.0,
     "reviewCount": 1
+  },
+  {
+    "slug": "aroma-diffuser",
+    "title": "アロマディフューザー",
+    "category": "Home Fragrance",
+    "sub": "玄関やベッドサイドの空気を整える、香りの小さな道具。",
+    "hook": "帰宅した瞬間や眠る前の時間に、強すぎない香りで部屋の印象を切り替えやすいアイテム。",
+    "best_for": "玄関、寝室、ワークスペース",
+    "keywords": "アロマディフューザー 水なし ネブライザー おしゃれ",
+    "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054.jpg",
+    "accent": "Scent edit",
+    "url": "https://hb.afl.rakuten.co.jp/hgc/g00uuqbn.ns77of0d.g00uuqbn.ns77p58f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnomadoplus1%2F101054%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnomadoplus1%2Fi%2F10000245%2F&rafcid=wsc_i_is_eda4c54f-611b-4465-912e-61b789970151",
+    "tracking_id": "pinterest-aroma-diffuser",
+    "itemCode": "nomadoplus1:10000245",
+    "itemName": "【20mlボルト付き】アロマディフューザー 水なし 車 ディフューザー 噴霧式 木目調 ネブライザー式 芳香剤 コードレス 3段階ミスト量調整 消臭剤 トイレ 小型 静音 転倒防止 部屋 玄関 ジム 寝室 オフィス リラックス 父 母 彼氏 彼女 誕生日 ギフト 送料無料",
+    "itemPrice": 3980,
+    "itemUrl": "https://hb.afl.rakuten.co.jp/hgc/g00uuqbn.ns77of0d.g00uuqbn.ns77p58f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnomadoplus1%2F101054%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnomadoplus1%2Fi%2F10000245%2F&rafcid=wsc_i_is_eda4c54f-611b-4465-912e-61b789970151",
+    "affiliateUrl": "https://hb.afl.rakuten.co.jp/hgc/g00uuqbn.ns77of0d.g00uuqbn.ns77p58f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnomadoplus1%2F101054%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnomadoplus1%2Fi%2F10000245%2F&rafcid=wsc_i_is_eda4c54f-611b-4465-912e-61b789970151",
+    "mediumImageUrls": [
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054.jpg",
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054-01.jpg",
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054-02.jpg"
+    ],
+    "smallImageUrls": [
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054.jpg?_ex=64x64",
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054-01.jpg?_ex=64x64",
+      "https://thumbnail.image.rakuten.co.jp/@0_mall/nomadoplus1/cabinet/a/101054/101054-02.jpg?_ex=64x64"
+    ],
+    "shopName": "のまどぷらす",
+    "reviewAverage": 5.0,
+    "reviewCount": 1
   }
 ]
